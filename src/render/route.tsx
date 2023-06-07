@@ -4,13 +4,20 @@ import Home from "./pages/home";
 import Communication from "./pages/communication";
 import Login from "./pages/login";
 import Native from "./pages/native";
+import Splash from './pages/splash'
 
 const routes = [
+  {
+    path: "*",
+    hidden: true,
+    label: <Link to="*">Communication</Link>,
+    element: <Splash />
+  },
   {
     path: "/login",
     hidden: true,
     label: <Link to="/communication">Communication</Link>,
-    element: <Login />
+    element:  <Login />
   },
   {
     path: "/",

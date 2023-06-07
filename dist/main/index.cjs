@@ -2,14 +2,14 @@
 const electron = require("electron");
 const path = require("path");
 const koffi = require("koffi");
-const rsNative = require(path.resolve(
-  __dirname,
-  "../../resources/rs-native.darwin-x64.node"
-));
-const sumLib = koffi.load(path.resolve(
-  __dirname,
-  "../../resources/sum.dylib"
-));
+const resolveBuildResourcesPath = (pathData) => {
+  return path.resolve(
+    __dirname,
+    `../${pathData}`
+  );
+};
+const rsNative = require(resolveBuildResourcesPath("../../buildResources/rs-native.darwin-x64.node"));
+const sumLib = koffi.load(resolveBuildResourcesPath("../../buildResources/sum.dylib"));
 const nativeSum = sumLib.stdcall("sum", "int", ["int", "int"]);
 const callNativeSumByDylib = (a, b) => {
   return nativeSum(a, b);
@@ -60,10 +60,8 @@ const createWindow = () => {
     }
   });
   {
-    {
-      mainWindow.loadURL("http://localhost:5173/");
-      mainWindow.webContents.openDevTools();
-    }
+    mainWindow.webContents.openDevTools();
+    mainWindow.loadFile(path.resolve(__dirname, "../render/index.html"));
   }
   workWindow = new electron.BrowserWindow({
     show: false,
@@ -73,9 +71,6 @@ const createWindow = () => {
     }
   });
   workWindow.hide();
-  {
-    workWindow.webContents.openDevTools();
-  }
   workWindow.loadFile(path.resolve(__dirname, "../work/index.html"));
   const { port1, port2 } = new electron.MessageChannelMain();
   mainWindow.once("ready-to-show", () => {

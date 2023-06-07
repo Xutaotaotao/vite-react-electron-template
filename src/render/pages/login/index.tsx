@@ -6,6 +6,7 @@ import { Button,Form, Input } from "antd";
 import { LockOutlined, UserOutlined } from "@ant-design/icons";
 import reactLogo from "@/render/assets/react.svg";
 import { useAuth } from "@/render/auth";
+import viteSvg from '@/render/assets/vite.svg'
 import "./index.less";
 
 function Login() {
@@ -27,7 +28,7 @@ function Login() {
       <div className="logo-section">
         <div>
           <a href="https://vitejs.dev" target="_blank">
-            <img src="/vite.svg" className="logo" alt="Vite logo" />
+            <img src={viteSvg} className="logo" alt="Vite logo" />
           </a>
           <a href="https://reactjs.org" target="_blank">
             <img src={reactLogo} className="logo react" alt="React logo" />

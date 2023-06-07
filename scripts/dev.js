@@ -1,3 +1,4 @@
+#!/usr/bin/node
 import path from "path";
 import electronPath from "electron";
 import { spawn } from "child_process";

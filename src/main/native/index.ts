@@ -1,14 +1,19 @@
 import koffi from 'koffi'
 import path from 'path'
-const rsNative = require(path.resolve(
-  __dirname,
-  "../../resources/rs-native.darwin-x64.node"
-))
 
-const sumLib = koffi.load(path.resolve(
-  __dirname,
-  "../../resources/sum.dylib"
-))
+const resolveBuildResourcesPath = (pathData:string) => {
+  return import.meta.env.MODE === "dev" ? path.resolve(
+    __dirname,
+    pathData
+  ) : path.resolve(
+    __dirname,
+    `../${pathData}`
+  )
+}
+
+const rsNative = require(resolveBuildResourcesPath('../../buildResources/rs-native.darwin-x64.node'))
+
+const sumLib = koffi.load(resolveBuildResourcesPath('../../buildResources/sum.dylib'))
 
 const nativeSum = sumLib.stdcall('sum','int',['int','int'])
 
