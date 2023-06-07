@@ -1,7 +1,6 @@
 import { HomeOutlined, UserOutlined,ApiOutlined,AndroidOutlined} from "@ant-design/icons";
 import { Link } from "react-router-dom";
 import Home from "./pages/home";
-import Mine from "./pages/mine";
 import Communication from "./pages/communication";
 import Login from "./pages/login";
 import Native from "./pages/native";
@@ -18,13 +17,6 @@ const routes = [
     icon: <HomeOutlined rev={undefined} />,
     label: <Link to="/">Home</Link>,
     element: <Home />,
-    auth: true
-  },
-  {
-    path: "/mine",
-    icon: <UserOutlined rev={undefined} />,
-    label: <Link to="/mine">Mine</Link>,
-    element: <Mine />,
     auth: true
   },
   {

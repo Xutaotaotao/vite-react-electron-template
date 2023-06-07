@@ -2,7 +2,13 @@
 
 ## 启动项目
 
-`npm run dev`
+`pnpm install`
+`pnpm run dev`
+
+## 预览
+![alt login](https://github.com/Xutaotaotao/cloud_img/blob/master/WechatIMG54.jpeg?raw=true "login")
+
+![alt home](https://github.com/Xutaotaotao/cloud_img/blob/master/WechatIMG55.jpeg?raw=true "home")
 
 ## 模版已实现功能点
 
@@ -10,6 +16,8 @@
 - [x] 登录
 - [x] 桥接通信管理
 - [x] 集成dylib和dll的调用
+- [ ] http请求封装
+
 
 ## 个人开发经验总结
 
