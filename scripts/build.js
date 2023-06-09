@@ -8,10 +8,10 @@ const __dirname = fileURLToPath(new URL(".", import.meta.url));
 const processArgv = process.argv.splice(2);
 const mode = processArgv && processArgv.length > 0 ? processArgv[0] :  "production";
 const packagesConfigs = [
-  resolve(__dirname, '../config/vite/main.js'),
-  resolve(__dirname, '../config/vite/preload.js'),
-  resolve(__dirname, '../config/vite/render.js'),
-  resolve(__dirname, '../config/vite/work.js'),
+  resolve(__dirname, '../vite/main.js'),
+  resolve(__dirname, '../vite/preload.js'),
+  resolve(__dirname, '../vite/render.js'),
+  resolve(__dirname, '../vite/work.js'),
 ]
 
 

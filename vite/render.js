@@ -11,11 +11,11 @@ const config = {
   base: './',
   resolve: {
     alias: {
-      "@": path.resolve(__dirname, "../../src"),
+      "@": path.resolve(__dirname, "../src"),
     },
   },
   build: {
-    outDir: path.resolve(__dirname, "../../dist/render"),
+    outDir: path.resolve(__dirname, "../dist/render"),
     minify: true,
     assetsInlineLimit: 1048576,
     emptyOutDir: true,

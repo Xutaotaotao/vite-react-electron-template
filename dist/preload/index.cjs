@@ -24,6 +24,14 @@ electron.contextBridge.exposeInMainWorld("nativeBridge", {
   },
   callNativeSubtractionByRustnode: (arg) => {
     return electron.ipcRenderer.invoke("callNativeSubtractionByRustnode", arg);
+  },
+  onAppUpdateDownloaded: (callback) => {
+    electron.ipcRenderer.on("app-update-downloaded", (e, value) => {
+      callback(e, value);
+    });
+  },
+  intsallUpdateApp: () => {
+    electron.ipcRenderer.invoke("intsallUpdateApp");
   }
 });
 electron.ipcRenderer.on("communicateWithEachOtherReply", (_event, arg) => {

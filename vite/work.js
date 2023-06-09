@@ -2,18 +2,20 @@ import { builtinModules } from 'module'
 import path from "path";
 
 const config = {
-  root: process.cwd(),
+  root: path.resolve(__dirname, '../src/work'),
+  envDir:process.cwd(),
   resolve: {
     alias: {
-      "@": path.resolve(__dirname, "../../src"),
+      "@": path.resolve(__dirname, "../src"),
     },
   },
   build: {
-    outDir: path.resolve(__dirname, "../../dist/preload"),
+    outDir: path.resolve(__dirname, "../dist/work"),
+    assetsDir: '.',
     minify: false,
     target: `node16`,
     lib: {
-      entry: path.resolve(__dirname, '../../src/preload/index.ts'),
+      entry: path.resolve(__dirname, '../src/work/index.ts'),
       formats: ['cjs']
     },
     rollupOptions: {

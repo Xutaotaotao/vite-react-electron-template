@@ -36,6 +36,14 @@ contextBridge.exposeInMainWorld("nativeBridge", {
   },
   callNativeSubtractionByRustnode:(arg:callNativeSumParmas) => {
     return ipcRenderer.invoke('callNativeSubtractionByRustnode',arg)
+  },
+  onAppUpdateDownloaded:(callback: Function) => {
+    ipcRenderer.on("app-update-downloaded", (e, value) => {
+      callback(e, value);
+    });
+  },
+  intsallUpdateApp: () => {
+    ipcRenderer.invoke('intsallUpdateApp')
   }
 });
 

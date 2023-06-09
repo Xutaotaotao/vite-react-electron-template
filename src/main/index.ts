@@ -6,6 +6,8 @@ import {
 } from "electron";
 import { join, resolve } from "path";
 import { initIpc } from "./ipc";
+import {initUpadate} from './update'
+
 
 let workWindow: any = null;
 let mainWindow: any = null;
@@ -27,7 +29,7 @@ const createWindow = () => {
       mainWindow.webContents.openDevTools();
     }
   } else {
-    mainWindow.webContents.openDevTools();
+    // mainWindow.webContents.openDevTools();
     mainWindow.loadFile(resolve(__dirname, "../render/index.html"));
   }
 
@@ -81,15 +83,13 @@ app.whenReady().then(() => {
   app.on("activate", () => {
     if (BrowserWindow.getAllWindows().length === 0) createWindow();
   });
-  // const nativeSumResult = callNativeSum(1,2)
-  // const rsNativeSumResult = rsNativeSum(3,2)
-  // const rsNativeSubtractionResult = rsNativeSubtraction(10,2)
-
-  // console.log(nativeSumResult)
-  // console.log(rsNativeSumResult)
-  // console.log(rsNativeSubtractionResult)
+  initUpadate()
 });
 
 app.on("window-all-closed", () => {
   if (process.platform !== "darwin") app.quit();
 });
+
+export {
+  mainWindow
+}

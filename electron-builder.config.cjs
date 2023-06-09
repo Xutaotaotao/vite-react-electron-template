@@ -19,7 +19,7 @@ const config = {
     target: ['dmg','zip'], // 打包的目标类型
     entitlements: './scripts/entitlements.mac.plist', // macOS 应用程序权限配置文件的路径
     entitlementsInherit: './scripts/entitlements.mac.plist', // 操作系统将继承的权限配置文件的路径
-    identity: '', // 应用程序签名的证书 ID
+    identity: 'Taotao Xu (V79DRC3Q8Z)', // 应用程序签名的证书 ID
     icon: './buildResources/icon/icon.icns', // 应用程序图标
     bundleVersion: 100, // 应用程序的捆绑版本
     extendInfo: { // 额外的 macOS 应用程序属性
@@ -63,6 +63,10 @@ const config = {
     artifactName: 'ViteReactElectronApp@${version}.${ext}', // 生成安装文件时的文件名
     include: './build/install/installer.nsh' //包含其他脚本文件的路径
   },
+  publish: {
+    provider: 'generic',
+    url: "http://127.0.0.1:8089/"
+  }
 };
 
 module.exports = config;

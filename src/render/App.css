@@ -1,8 +1,6 @@
 #root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+  height: 100%;
+  width: 100%;
 }
 
 .logo {
@@ -43,4 +41,11 @@
 
 .div-shape{
   margin: 10px 0;
+}
+
+.info-tip{
+  position: absolute;
+  z-index: 1000;
+  bottom: 35px;
+  left: 15px ;
 }

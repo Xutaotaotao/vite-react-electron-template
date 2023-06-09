@@ -1,5 +1,6 @@
 import { ipcMain, IpcMainEvent, shell } from "electron";
 import { callNativeSumByDylib,callNativeSumByRustnode,callNativeSubtractionByRustnode } from "../native";
+import { intsallUpdateApp } from "../update";
 
 const openUrlByDefaultBrowser = (e: IpcMainEvent, args: any) => {
   shell.openExternal(args);
@@ -32,5 +33,9 @@ export const initIpc = (mainWindow:any,workWindow:any) => {
 
   ipcMain.handle('callNativeSubtractionByRustnode',(event:Event,arg) => {
     return callNativeSubtractionByRustnode(arg.parmasOne,arg.parmasTwo)
+  })
+
+  ipcMain.handle('intsallUpdateApp',() => {
+    intsallUpdateApp()
   })
 }
