@@ -19,7 +19,7 @@ const require$$3 = require("http");
 const resolveBuildResourcesPath = (pathData) => {
   return require$$1.resolve(
     __dirname,
-    `../${pathData}`
+    pathData
   );
 };
 const rsNative = require(resolveBuildResourcesPath("../../buildResources/rs-native.darwin-x64.node"));
@@ -13873,6 +13873,7 @@ const initUpadate = () => {
     console.log(error);
   });
   mainExports.autoUpdater.on("checking-for-update", function() {
+    printUpdaterMessage("checking-for-update");
   });
   mainExports.autoUpdater.on("update-available", function(info) {
     printUpdaterMessage("update-available");
@@ -13897,7 +13898,7 @@ const initUpadate = () => {
 function printUpdaterMessage(key) {
   let message = {
     "error": "更新出错",
-    "checking": "正在检查更新",
+    "checking-for-update": "正在检查更新",
     "update-available": "检测到新版本",
     "download-progress": "下载中",
     "update-not-available": "无新版本",
@@ -13952,8 +13953,10 @@ const createWindow = () => {
     }
   });
   {
-    exports.mainWindow.webContents.openDevTools();
-    exports.mainWindow.loadFile(require$$1.resolve(__dirname, "../render/index.html"));
+    {
+      exports.mainWindow.loadURL("http://localhost:5173/");
+      exports.mainWindow.webContents.openDevTools();
+    }
   }
   workWindow = new require$$1$4.BrowserWindow({
     show: false,
@@ -13963,6 +13966,9 @@ const createWindow = () => {
     }
   });
   workWindow.hide();
+  {
+    workWindow.webContents.openDevTools();
+  }
   workWindow.loadFile(require$$1.resolve(__dirname, "../work/index.html"));
   const { port1, port2 } = new require$$1$4.MessageChannelMain();
   exports.mainWindow.once("ready-to-show", () => {

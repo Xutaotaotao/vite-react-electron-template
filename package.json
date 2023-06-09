@@ -3,7 +3,7 @@
   "author": "Terence",
   "description": "A vite react electron project",
   "private": true,
-  "version": "1.0.1",
+  "version": "1.0.0",
   "type": "module",
   "main": "dist/main/index.cjs",
   "scripts": {
