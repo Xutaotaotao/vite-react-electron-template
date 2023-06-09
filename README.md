@@ -38,3 +38,5 @@
 [Electron开发实践(5)——原生模块调用&开发（dll,dylib,rust）](https://juejin.cn/post/7205162789156159546 "https://juejin.cn/post/7205162789156159546")
 
 [Electron开发实践(6)——打包](https://juejin.cn/post/7241859817563996197 "https://juejin.cn/post/7241859817563996197")
+
+[Electron开发实践(7)——升级](https://juejin.cn/post/7242562139041824824 "https://juejin.cn/post/7242562139041824824")
