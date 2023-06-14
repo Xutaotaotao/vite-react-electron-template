@@ -13,9 +13,9 @@
   },
   "dependencies": {
     "koffi": "^2.3.20",
+    "log4js": "^6.9.1",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "log4js": "^6.9.1"
+    "react-dom": "^18.2.0"
   },
   "devDependencies": {
     "@ant-design/icons": "^5.1.4",
@@ -25,7 +25,7 @@
     "@types/react-dom": "^18.0.10",
     "@vitejs/plugin-react-swc": "^3.0.0",
     "antd": "^5.5.2",
-    "electron": "20.0.0",
+    "electron": "25.1.0",
     "electron-builder": "^23.6.0",
     "electron-updater": "^5.3.0",
     "fs-extra": "^11.1.0",
