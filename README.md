@@ -1,31 +1,28 @@
-# Vite + React + Electorn 项目模版
+# vite-react-electron-template
 
-## 启动项目
+一个 Vite + React + Electorn 构建的Electron桌面客户端开发模版
+
+# 启动项目
 
 `pnpm install`
 
 `pnpm run dev`
 
-## 预览
+# 预览
 ![alt login](https://github.com/Xutaotaotao/cloud_img/blob/master/WechatIMG54.jpeg?raw=true "login")
 
 ![alt home](https://github.com/Xutaotaotao/cloud_img/blob/master/WechatIMG55.jpeg?raw=true "home")
 
-## 模版已实现功能点
+# 特点
 
-- [x] 渲染进程&任务进程&主进程&preload
-- [x] 登录
-- [x] 桥接通信管理
-- [x] 集成dylib和dll的调用
-- [x] 打包构建流程
-- [x] 升级更新管理流程
-- [ ] http请求封装
+- [x] 渲染进程&任务进程&主进程&preload管理，一键启动开发项目
+- [x] 登录简单实现
+- [x] 桥接通信管理例子
+- [x] 集成dylib和dll的调用例子
+- [x] 打包构建流程实现
+- [x] 升级更新管理流程实现
 
-
-
-## 个人开发经验总结
-
-### Electron开发实践系列文章
+# 开发教程
 
 [Electron开发实践(1)——为什么选择Electron](https://juejin.cn/post/7201703197424320549 "https://juejin.cn/post/7201703197424320549")
 
