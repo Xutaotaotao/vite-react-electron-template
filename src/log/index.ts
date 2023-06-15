@@ -1,12 +1,13 @@
 const log4js = require('log4js');
 const path = require('path');
+const { app } = require('electron');
 
-const LOG_PATH = '/Users/Shared'
+const LOG_PATH = path.join(app.getAppPath(), "log4")
 
 log4js.configure({
   appenders: { 
     out: { type: 'stdout' },
-    app: { type: 'file', filename: path.join(LOG_PATH, "log") }
+    app: { type: 'file', filename: LOG_PATH }
   },
   categories: { 
     default: { appenders: ['out', 'app'], level: 'info' } 
