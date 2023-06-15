@@ -6,6 +6,7 @@ import { useEffect } from "react";
 import { Modal, Popover } from "antd";
 import { InfoCircleOutlined } from "@ant-design/icons";
 import packInfo from "../../package.json";
+import { testFetch } from "@/http/service";
 
 export default function App() {
   useEffect(() => {
@@ -23,6 +24,9 @@ export default function App() {
         });
       }
     });
+    // testFetch().then(res => {
+    //   console.log(res)
+    // })
   }, []);
 
   return (

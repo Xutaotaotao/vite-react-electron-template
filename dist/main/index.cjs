@@ -19,7 +19,7 @@ const require$$3 = require("http");
 const resolveBuildResourcesPath = (pathData) => {
   return require$$1.resolve(
     __dirname,
-    `../${pathData}`
+    pathData
   );
 };
 const rsNative = require(resolveBuildResourcesPath("../../buildResources/rs-native.darwin-x64.node"));
@@ -11049,8 +11049,8 @@ ElectronAppAdapter$1.ElectronAppAdapter = void 0;
 const path$2 = require$$1;
 const AppAdapter_1 = AppAdapter;
 class ElectronAppAdapter {
-  constructor(app = require$$1$4.app) {
-    this.app = app;
+  constructor(app2 = require$$1$4.app) {
+    this.app = app2;
   }
   whenReady() {
     return this.app.whenReady();
@@ -11201,9 +11201,9 @@ function newBaseUrl(url) {
   return result;
 }
 util.newBaseUrl = newBaseUrl;
-function newUrlFromBase(pathname, baseUrl, addRandomQueryToAvoidCaching = false) {
-  const result = new url_1$3.URL(pathname, baseUrl);
-  const search = baseUrl.search;
+function newUrlFromBase(pathname, baseUrl2, addRandomQueryToAvoidCaching = false) {
+  const result = new url_1$3.URL(pathname, baseUrl2);
+  const search = baseUrl2.search;
   if (search != null && search.length !== 0) {
     result.search = search;
   } else if (addRandomQueryToAvoidCaching) {
@@ -11216,9 +11216,9 @@ function getChannelFilename(channel) {
   return `${channel}.yml`;
 }
 util.getChannelFilename = getChannelFilename;
-function blockmapFiles(baseUrl, oldVersion, newVersion) {
-  const newBlockMapUrl = newUrlFromBase(`${baseUrl.pathname}.blockmap`, baseUrl);
-  const oldBlockMapUrl = newUrlFromBase(`${baseUrl.pathname.replace(new RegExp(escapeRegExp(newVersion), "g"), oldVersion)}.blockmap`, baseUrl);
+function blockmapFiles(baseUrl2, oldVersion, newVersion) {
+  const newBlockMapUrl = newUrlFromBase(`${baseUrl2.pathname}.blockmap`, baseUrl2);
+  const oldBlockMapUrl = newUrlFromBase(`${baseUrl2.pathname.replace(new RegExp(escapeRegExp(newVersion), "g"), oldVersion)}.blockmap`, baseUrl2);
   return [oldBlockMapUrl, newBlockMapUrl];
 }
 util.blockmapFiles = blockmapFiles;
@@ -11324,14 +11324,14 @@ function getFileList(updateInfo) {
   }
 }
 Provider$1.getFileList = getFileList;
-function resolveFiles(updateInfo, baseUrl, pathTransformer = (p) => p) {
+function resolveFiles(updateInfo, baseUrl2, pathTransformer = (p) => p) {
   const files = getFileList(updateInfo);
   const result = files.map((fileInfo) => {
     if (fileInfo.sha2 == null && fileInfo.sha512 == null) {
       throw builder_util_runtime_1$a.newError(`Update info doesn't contain nor sha256 neither sha512 checksum: ${builder_util_runtime_1$a.safeStringifyJson(fileInfo)}`, "ERR_UPDATER_NO_CHECKSUM");
     }
     return {
-      url: util_1$5.newUrlFromBase(pathTransformer(fileInfo.url), baseUrl),
+      url: util_1$5.newUrlFromBase(pathTransformer(fileInfo.url), baseUrl2),
       info: fileInfo
     };
   });
@@ -11340,7 +11340,7 @@ function resolveFiles(updateInfo, baseUrl, pathTransformer = (p) => p) {
   if (packageInfo != null) {
     result[0].packageInfo = {
       ...packageInfo,
-      path: util_1$5.newUrlFromBase(pathTransformer(packageInfo.path), baseUrl).href
+      path: util_1$5.newUrlFromBase(pathTransformer(packageInfo.path), baseUrl2).href
     };
   }
   return result;
@@ -11816,7 +11816,7 @@ function requireAppUpdater() {
   const main_1 = requireMain();
   const providerFactory_1 = providerFactory;
   let AppUpdater$1 = class AppUpdater2 extends events_12.EventEmitter {
-    constructor(options, app) {
+    constructor(options, app2) {
       super();
       this.autoDownload = true;
       this.autoInstallOnAppQuit = true;
@@ -11841,11 +11841,11 @@ function requireAppUpdater() {
       this.on("error", (error) => {
         this._logger.error(`Error: ${error.stack || error.message}`);
       });
-      if (app == null) {
+      if (app2 == null) {
         this.app = new ElectronAppAdapter_1.ElectronAppAdapter();
         this.httpExecutor = new electronHttpExecutor_1.ElectronHttpExecutor((authInfo, callback) => this.emit("login", authInfo, callback));
       } else {
-        this.app = app;
+        this.app = app2;
         this.httpExecutor = null;
       }
       const currentVersionString = this.app.version;
@@ -12296,8 +12296,8 @@ function requireBaseUpdater() {
   BaseUpdater.BaseUpdater = void 0;
   const AppUpdater_1 = requireAppUpdater();
   let BaseUpdater$1 = class BaseUpdater extends AppUpdater_1.AppUpdater {
-    constructor(options, app) {
-      super(options, app);
+    constructor(options, app2) {
+      super(options, app2);
       this.quitAndInstallCalled = false;
       this.quitHandlerAdded = false;
     }
@@ -13152,8 +13152,8 @@ function requireAppImageUpdater() {
   const main_1 = requireMain();
   const Provider_12 = Provider$1;
   let AppImageUpdater$1 = class AppImageUpdater extends BaseUpdater_1.BaseUpdater {
-    constructor(options, app) {
-      super(options, app);
+    constructor(options, app2) {
+      super(options, app2);
     }
     isUpdaterActive() {
       if (process.env["APPIMAGE"] == null) {
@@ -13259,8 +13259,8 @@ function requireMacUpdater() {
   const child_process_12 = require$$1$5;
   const crypto_12 = require$$0$2;
   let MacUpdater$1 = class MacUpdater extends AppUpdater_1.AppUpdater {
-    constructor(options, app) {
-      super(options, app);
+    constructor(options, app2) {
+      super(options, app2);
       this.nativeUpdater = require$$1$4.autoUpdater;
       this.squirrelDownloadedUpdate = false;
       this.nativeUpdater.on("error", (it) => {
@@ -13572,8 +13572,8 @@ function requireNsisUpdater() {
   const url_12 = require$$4;
   const zlib_12 = require$$2;
   let NsisUpdater$1 = class NsisUpdater extends BaseUpdater_1.BaseUpdater {
-    constructor(options, app) {
-      super(options, app);
+    constructor(options, app2) {
+      super(options, app2);
     }
     /*** @private */
     doDownloadUpdate(downloadUpdateOptions) {
@@ -13849,11 +13849,12 @@ function requireMain() {
 var mainExports = requireMain();
 const log4js = require("log4js");
 const path = require("path");
-const LOG_PATH = "/Users/Shared";
+const { app } = require("electron");
+const LOG_PATH = path.join(app.getAppPath(), "log4");
 log4js.configure({
   appenders: {
     out: { type: "stdout" },
-    app: { type: "file", filename: path.join(LOG_PATH, "log") }
+    app: { type: "file", filename: LOG_PATH }
   },
   categories: {
     default: { appenders: ["out", "app"], level: "info" }
@@ -13940,6 +13941,59 @@ const initIpc = (mainWindow, workWindow2) => {
     intsallUpdateApp();
   });
 };
+const MODE = "dev";
+const baseUrls = {
+  dev: "https://www.baidu.com",
+  production: "https://github.com"
+};
+const baseUrl = baseUrls[MODE];
+const baseOptions = (params, method = "get") => {
+  let { url, data } = params;
+  let contentType = "application/json";
+  contentType = params.contentType || contentType;
+  const option = {
+    url: baseUrl + url,
+    data,
+    method,
+    header: {
+      "content-type": contentType,
+      Authorization: ""
+    }
+  };
+  return option;
+};
+const netRequest = (option) => {
+  return new Promise(async (resolve, reject) => {
+    const { net } = require("electron");
+    const request = net.request(option);
+    let Data = {};
+    request.on("response", (response) => {
+      console.log(`STATUS: ${response.statusCode}`);
+      console.log(`HEADERS: ${JSON.stringify(response.headers)}`);
+      response.on("data", (chunk) => {
+        console.log(`BODY: ${chunk}`);
+        Data = chunk;
+      });
+      response.on("end", () => {
+        console.log("No more data in response.");
+        resolve(Data);
+      });
+    });
+    request.end();
+  });
+};
+const baseRequest = (url, data) => {
+  const option = baseOptions({
+    url,
+    data
+  });
+  {
+    return netRequest(option);
+  }
+};
+const testFetch = () => {
+  return baseRequest("/s", {});
+};
 let workWindow = null;
 exports.mainWindow = null;
 const createWindow = () => {
@@ -13949,20 +14003,28 @@ const createWindow = () => {
     webPreferences: {
       contextIsolation: true,
       nodeIntegration: true,
+      webSecurity: false,
       preload: require$$1.join(__dirname, "../preload/index.cjs")
     }
   });
   {
-    exports.mainWindow.loadFile(require$$1.resolve(__dirname, "../render/index.html"));
+    {
+      exports.mainWindow.loadURL("http://localhost:5173/");
+      exports.mainWindow.webContents.openDevTools();
+    }
   }
   workWindow = new require$$1$4.BrowserWindow({
     show: false,
     webPreferences: {
       nodeIntegration: true,
+      webSecurity: false,
       preload: require$$1.join(__dirname, "../work/index.cjs")
     }
   });
   workWindow.hide();
+  {
+    workWindow.webContents.openDevTools();
+  }
   workWindow.loadFile(require$$1.resolve(__dirname, "../work/index.html"));
   const { port1, port2 } = new require$$1$4.MessageChannelMain();
   exports.mainWindow.once("ready-to-show", () => {
@@ -13997,8 +14059,10 @@ require$$1$4.app.whenReady().then(() => {
       createWindow();
   });
   initUpadate();
+  testFetch().then((res) => {
+    console.log(res);
+  });
 });
 require$$1$4.app.on("window-all-closed", () => {
-  if (process.platform !== "darwin")
-    require$$1$4.app.quit();
+  require$$1$4.app.quit();
 });

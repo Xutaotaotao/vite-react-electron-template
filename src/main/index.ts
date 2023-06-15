@@ -7,6 +7,7 @@ import {
 import { join, resolve } from "path";
 import { initIpc } from "./ipc";
 import {initUpadate} from './update'
+import { testFetch } from "@/http/service";
 
 
 let workWindow: any = null;
@@ -19,6 +20,7 @@ const createWindow = () => {
     webPreferences: {
       contextIsolation: true,
       nodeIntegration: true,
+      webSecurity: false,
       preload: join(__dirname, "../preload/index.cjs"),
     },
   });
@@ -37,6 +39,7 @@ const createWindow = () => {
     show: false,
     webPreferences: {
       nodeIntegration: true,
+      webSecurity: false,
       preload: join(__dirname, "../work/index.cjs"),
     },
   });
@@ -84,10 +87,13 @@ app.whenReady().then(() => {
     if (BrowserWindow.getAllWindows().length === 0) createWindow();
   });
   initUpadate()
+  testFetch().then(res => {
+    console.log(res)
+  })
 });
 
 app.on("window-all-closed", () => {
-  if (process.platform !== "darwin") app.quit();
+  app.quit();
 });
 
 export {

@@ -12,6 +12,7 @@
     "compile": "electron-builder build --config electron-builder.config.cjs"
   },
   "dependencies": {
+    "axios": "^1.4.0",
     "koffi": "^2.3.20",
     "log4js": "^6.9.1",
     "react": "^18.2.0",

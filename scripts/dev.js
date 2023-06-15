@@ -106,6 +106,14 @@ const mainDev = {
             spawnProcess.stderr.on("data", (data) => {
               console.error(`stderr: ${data}`);
             });
+
+            process.on('SIGINT', () => {
+              if (spawnProcess) {
+                spawnProcess.kill();
+                spawnProcess = null;
+              }
+              process.exit();
+            });
           },
         },
       ],
