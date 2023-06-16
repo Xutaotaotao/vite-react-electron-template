@@ -7,7 +7,7 @@ import {
 import { join, resolve } from "path";
 import { initIpc } from "./ipc";
 import {initUpadate} from './update'
-import { testFetch } from "@/http/service";
+import { initDb } from "@/lowdb/low";
 
 
 let workWindow: any = null;
@@ -80,16 +80,15 @@ const creatMenu = () => {
 };
 
 app.whenReady().then(() => {
-  createWindow();
   creatMenu();
-  initIpc(mainWindow, workWindow);
+  initDb().then(() => {
+     createWindow();
+     initIpc(mainWindow, workWindow);
+  })
   app.on("activate", () => {
     if (BrowserWindow.getAllWindows().length === 0) createWindow();
   });
   initUpadate()
-  testFetch().then(res => {
-    console.log(res)
-  })
 });
 
 app.on("window-all-closed", () => {

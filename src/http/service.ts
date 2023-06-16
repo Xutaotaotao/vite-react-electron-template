@@ -1,5 +1,5 @@
-import {baseRequest} from "./index";
+import {getRequest} from "./index";
 
-export const testFetch = () => {
-  return baseRequest('/s',{})
+export const loginFetch = (data:any) => {
+  return getRequest(`/user?username=${data.username}`,{})
 }

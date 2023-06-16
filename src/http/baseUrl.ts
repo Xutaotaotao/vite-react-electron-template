@@ -1,8 +1,8 @@
 const MODE = import.meta.env.MODE || 'production'
 
 export const baseUrls:any = {
-  dev: 'https://www.baidu.com',
-  production: 'https://github.com'
+  dev: 'http://localhost:3999',
+  production: 'http://jsonplaceholder.typicode.com'
 }
 
 const baseUrl = baseUrls[MODE]

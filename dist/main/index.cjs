@@ -1,19 +1,19 @@
 "use strict";
 Object.defineProperty(exports, Symbol.toStringTag, { value: "Module" });
-const require$$1$4 = require("electron");
+const require$$1$3 = require("electron");
 const require$$1 = require("path");
 const koffi = require("koffi");
 const require$$0 = require("events");
 const require$$0$2 = require("crypto");
-const require$$1$1 = require("fs");
+const fs$j = require("fs");
 const require$$0$1 = require("stream");
 const require$$4 = require("url");
-const require$$1$2 = require("string_decoder");
+const require$$1$1 = require("string_decoder");
 const require$$0$3 = require("constants");
 const require$$4$1 = require("util");
 const require$$5 = require("assert");
-const require$$1$3 = require("os");
-const require$$1$5 = require("child_process");
+const require$$1$2 = require("os");
+const require$$1$4 = require("child_process");
 const require$$2 = require("zlib");
 const require$$3 = require("http");
 const resolveBuildResourcesPath = (pathData) => {
@@ -649,7 +649,7 @@ function requireHttpExecutor() {
   httpExecutor.safeStringifyJson = httpExecutor.configureRequestOptions = httpExecutor.safeGetHeader = httpExecutor.DigestTransform = httpExecutor.configureRequestUrl = httpExecutor.configureRequestOptionsFromUrl = httpExecutor.HttpExecutor = httpExecutor.parseJson = httpExecutor.HttpError = httpExecutor.createHttpError = void 0;
   const crypto_12 = require$$0$2;
   const debug_12 = browserExports;
-  const fs_12 = require$$1$1;
+  const fs_12 = fs$j;
   const stream_12 = require$$0$1;
   const url_12 = require$$4;
   const CancellationToken_1 = CancellationToken$1;
@@ -1550,7 +1550,7 @@ var sax = {};
     SAXStream.prototype.write = function(data) {
       if (typeof Buffer === "function" && typeof Buffer.isBuffer === "function" && Buffer.isBuffer(data)) {
         if (!this._decoder) {
-          var SD = require$$1$2.StringDecoder;
+          var SD = require$$1$1.StringDecoder;
           this._decoder = new SD("utf8");
         }
         data = this._decoder.write(data);
@@ -3435,7 +3435,7 @@ function clone$1(obj) {
   });
   return copy2;
 }
-var fs$h = require$$1$1;
+var fs$h = fs$j;
 var polyfills = polyfills$1;
 var legacy = legacyStreams;
 var clone = clone_1;
@@ -5099,7 +5099,7 @@ let _fs;
 try {
   _fs = gracefulFs;
 } catch (_) {
-  _fs = require$$1$1;
+  _fs = fs$j;
 }
 const universalify = universalify$1;
 const { stringify: stringify$2, stripBom } = utils;
@@ -10324,8 +10324,8 @@ var lodash_isequal = {
   );
   var Buffer2 = moduleExports ? root2.Buffer : void 0, Symbol2 = root2.Symbol, Uint8Array2 = root2.Uint8Array, propertyIsEnumerable = objectProto2.propertyIsEnumerable, splice = arrayProto.splice, symToStringTag = Symbol2 ? Symbol2.toStringTag : void 0;
   var nativeGetSymbols = Object.getOwnPropertySymbols, nativeIsBuffer = Buffer2 ? Buffer2.isBuffer : void 0, nativeKeys = overArg(Object.keys, Object);
-  var DataView = getNative(root2, "DataView"), Map2 = getNative(root2, "Map"), Promise2 = getNative(root2, "Promise"), Set2 = getNative(root2, "Set"), WeakMap = getNative(root2, "WeakMap"), nativeCreate = getNative(Object, "create");
-  var dataViewCtorString = toSource(DataView), mapCtorString = toSource(Map2), promiseCtorString = toSource(Promise2), setCtorString = toSource(Set2), weakMapCtorString = toSource(WeakMap);
+  var DataView = getNative(root2, "DataView"), Map2 = getNative(root2, "Map"), Promise2 = getNative(root2, "Promise"), Set2 = getNative(root2, "Set"), WeakMap2 = getNative(root2, "WeakMap"), nativeCreate = getNative(Object, "create");
+  var dataViewCtorString = toSource(DataView), mapCtorString = toSource(Map2), promiseCtorString = toSource(Promise2), setCtorString = toSource(Set2), weakMapCtorString = toSource(WeakMap2);
   var symbolProto2 = Symbol2 ? Symbol2.prototype : void 0, symbolValueOf = symbolProto2 ? symbolProto2.valueOf : void 0;
   function Hash(entries) {
     var index = -1, length = entries == null ? 0 : entries.length;
@@ -10772,7 +10772,7 @@ var lodash_isequal = {
     });
   };
   var getTag = baseGetTag;
-  if (DataView && getTag(new DataView(new ArrayBuffer(1))) != dataViewTag || Map2 && getTag(new Map2()) != mapTag || Promise2 && getTag(Promise2.resolve()) != promiseTag || Set2 && getTag(new Set2()) != setTag || WeakMap && getTag(new WeakMap()) != weakMapTag) {
+  if (DataView && getTag(new DataView(new ArrayBuffer(1))) != dataViewTag || Map2 && getTag(new Map2()) != mapTag || Promise2 && getTag(Promise2.resolve()) != promiseTag || Set2 && getTag(new Set2()) != setTag || WeakMap2 && getTag(new WeakMap2()) != weakMapTag) {
     getTag = function(value) {
       var result = baseGetTag(value), Ctor = result == objectTag ? value.constructor : void 0, ctorString = Ctor ? toSource(Ctor) : "";
       if (ctorString) {
@@ -10871,7 +10871,7 @@ var lodash_isequal = {
 Object.defineProperty(DownloadedUpdateHelper$1, "__esModule", { value: true });
 DownloadedUpdateHelper$1.createTempUpdateFile = DownloadedUpdateHelper$1.DownloadedUpdateHelper = void 0;
 const crypto_1 = require$$0$2;
-const fs_1$2 = require$$1$1;
+const fs_1$2 = fs$j;
 const isEqual = lodash_isequalExports;
 const fs_extra_1$2 = lib;
 const path$4 = require$$1;
@@ -11030,7 +11030,7 @@ var AppAdapter = {};
 Object.defineProperty(AppAdapter, "__esModule", { value: true });
 AppAdapter.getAppCacheDir = void 0;
 const path$3 = require$$1;
-const os_1 = require$$1$3;
+const os_1 = require$$1$2;
 function getAppCacheDir() {
   const homedir = os_1.homedir();
   let result;
@@ -11049,7 +11049,7 @@ ElectronAppAdapter$1.ElectronAppAdapter = void 0;
 const path$2 = require$$1;
 const AppAdapter_1 = AppAdapter;
 class ElectronAppAdapter {
-  constructor(app2 = require$$1$4.app) {
+  constructor(app2 = require$$1$3.app) {
     this.app = app2;
   }
   whenReady() {
@@ -11088,7 +11088,7 @@ var electronHttpExecutor = {};
   const builder_util_runtime_12 = requireOut();
   exports2.NET_SESSION_NAME = "electron-updater";
   function getNetSession() {
-    return require$$1$4.session.fromPartition(exports2.NET_SESSION_NAME, {
+    return require$$1$3.session.fromPartition(exports2.NET_SESSION_NAME, {
       cache: false
     });
   }
@@ -11130,7 +11130,7 @@ var electronHttpExecutor = {};
       if (this.cachedSession == null) {
         this.cachedSession = getNetSession();
       }
-      const request = require$$1$4.net.request({
+      const request = require$$1$3.net.request({
         ...options,
         session: this.cachedSession
       });
@@ -11201,9 +11201,9 @@ function newBaseUrl(url) {
   return result;
 }
 util.newBaseUrl = newBaseUrl;
-function newUrlFromBase(pathname, baseUrl2, addRandomQueryToAvoidCaching = false) {
-  const result = new url_1$3.URL(pathname, baseUrl2);
-  const search = baseUrl2.search;
+function newUrlFromBase(pathname, baseUrl, addRandomQueryToAvoidCaching = false) {
+  const result = new url_1$3.URL(pathname, baseUrl);
+  const search = baseUrl.search;
   if (search != null && search.length !== 0) {
     result.search = search;
   } else if (addRandomQueryToAvoidCaching) {
@@ -11216,9 +11216,9 @@ function getChannelFilename(channel) {
   return `${channel}.yml`;
 }
 util.getChannelFilename = getChannelFilename;
-function blockmapFiles(baseUrl2, oldVersion, newVersion) {
-  const newBlockMapUrl = newUrlFromBase(`${baseUrl2.pathname}.blockmap`, baseUrl2);
-  const oldBlockMapUrl = newUrlFromBase(`${baseUrl2.pathname.replace(new RegExp(escapeRegExp(newVersion), "g"), oldVersion)}.blockmap`, baseUrl2);
+function blockmapFiles(baseUrl, oldVersion, newVersion) {
+  const newBlockMapUrl = newUrlFromBase(`${baseUrl.pathname}.blockmap`, baseUrl);
+  const oldBlockMapUrl = newUrlFromBase(`${baseUrl.pathname.replace(new RegExp(escapeRegExp(newVersion), "g"), oldVersion)}.blockmap`, baseUrl);
   return [oldBlockMapUrl, newBlockMapUrl];
 }
 util.blockmapFiles = blockmapFiles;
@@ -11324,14 +11324,14 @@ function getFileList(updateInfo) {
   }
 }
 Provider$1.getFileList = getFileList;
-function resolveFiles(updateInfo, baseUrl2, pathTransformer = (p) => p) {
+function resolveFiles(updateInfo, baseUrl, pathTransformer = (p) => p) {
   const files = getFileList(updateInfo);
   const result = files.map((fileInfo) => {
     if (fileInfo.sha2 == null && fileInfo.sha512 == null) {
       throw builder_util_runtime_1$a.newError(`Update info doesn't contain nor sha256 neither sha512 checksum: ${builder_util_runtime_1$a.safeStringifyJson(fileInfo)}`, "ERR_UPDATER_NO_CHECKSUM");
     }
     return {
-      url: util_1$5.newUrlFromBase(pathTransformer(fileInfo.url), baseUrl2),
+      url: util_1$5.newUrlFromBase(pathTransformer(fileInfo.url), baseUrl),
       info: fileInfo
     };
   });
@@ -11340,7 +11340,7 @@ function resolveFiles(updateInfo, baseUrl2, pathTransformer = (p) => p) {
   if (packageInfo != null) {
     result[0].packageInfo = {
       ...packageInfo,
-      path: util_1$5.newUrlFromBase(pathTransformer(packageInfo.path), baseUrl2).href
+      path: util_1$5.newUrlFromBase(pathTransformer(packageInfo.path), baseUrl).href
     };
   }
   return result;
@@ -11981,7 +11981,7 @@ function requireAppUpdater() {
         }
         void it.downloadPromise.then(() => {
           const notificationContent = AppUpdater2.formatDownloadNotification(it.updateInfo.version, this.app.name, downloadNotification);
-          new require$$1$4.Notification(notificationContent).show();
+          new require$$1$3.Notification(notificationContent).show();
         });
         return it;
       });
@@ -12306,7 +12306,7 @@ function requireBaseUpdater() {
       const isInstalled = this.install(isSilent, isSilent ? isForceRunAfter : this.autoRunAppAfterInstall);
       if (isInstalled) {
         setImmediate(() => {
-          require$$1$4.autoUpdater.emit("before-quit-for-update");
+          require$$1$3.autoUpdater.emit("before-quit-for-update");
           this.app.quit();
         });
       } else {
@@ -12487,7 +12487,7 @@ rel: ${lastOperation.start - min} until ${lastOperation.end - min} and ${operati
 Object.defineProperty(DataSplitter$1, "__esModule", { value: true });
 DataSplitter$1.DataSplitter = DataSplitter$1.copyData = void 0;
 const builder_util_runtime_1$3 = requireOut();
-const fs_1$1 = require$$1$1;
+const fs_1$1 = fs$j;
 const stream_1$1 = require$$0$1;
 const downloadPlanBuilder_1$2 = downloadPlanBuilder;
 const DOUBLE_CRLF = Buffer.from("\r\n\r\n");
@@ -12872,7 +12872,7 @@ Object.defineProperty(DifferentialDownloader$1, "__esModule", { value: true });
 DifferentialDownloader$1.DifferentialDownloader = void 0;
 const builder_util_runtime_1$1 = requireOut();
 const fs_extra_1$1 = lib;
-const fs_1 = require$$1$1;
+const fs_1 = fs$j;
 const DataSplitter_1 = DataSplitter$1;
 const url_1 = require$$4;
 const downloadPlanBuilder_1 = downloadPlanBuilder;
@@ -13143,9 +13143,9 @@ function requireAppImageUpdater() {
   Object.defineProperty(AppImageUpdater, "__esModule", { value: true });
   AppImageUpdater.AppImageUpdater = void 0;
   const builder_util_runtime_12 = requireOut();
-  const child_process_12 = require$$1$5;
+  const child_process_12 = require$$1$4;
   const fs_extra_12 = lib;
-  const fs_12 = require$$1$1;
+  const fs_12 = fs$j;
   const path2 = require$$1;
   const BaseUpdater_1 = requireBaseUpdater();
   const FileWithEmbeddedBlockMapDifferentialDownloader_1 = FileWithEmbeddedBlockMapDifferentialDownloader$1;
@@ -13252,16 +13252,16 @@ function requireMacUpdater() {
   MacUpdater.MacUpdater = void 0;
   const builder_util_runtime_12 = requireOut();
   const fs_extra_12 = lib;
-  const fs_12 = require$$1$1;
+  const fs_12 = fs$j;
   const http_1 = require$$3;
   const AppUpdater_1 = requireAppUpdater();
   const Provider_12 = Provider$1;
-  const child_process_12 = require$$1$5;
+  const child_process_12 = require$$1$4;
   const crypto_12 = require$$0$2;
   let MacUpdater$1 = class MacUpdater extends AppUpdater_1.AppUpdater {
     constructor(options, app2) {
       super(options, app2);
-      this.nativeUpdater = require$$1$4.autoUpdater;
+      this.nativeUpdater = require$$1$3.autoUpdater;
       this.squirrelDownloadedUpdate = false;
       this.nativeUpdater.on("error", (it) => {
         this._logger.warn(it);
@@ -13459,8 +13459,8 @@ var windowsExecutableCodeSignatureVerifier = {};
 Object.defineProperty(windowsExecutableCodeSignatureVerifier, "__esModule", { value: true });
 windowsExecutableCodeSignatureVerifier.verifySignature = void 0;
 const builder_util_runtime_1 = requireOut();
-const child_process_1 = require$$1$5;
-const os = require$$1$3;
+const child_process_1 = require$$1$4;
+const os = require$$1$2;
 function verifySignature(publisherNames, unescapedTempUpdateFile, logger2) {
   return new Promise((resolve) => {
     const tempUpdateFile = unescapedTempUpdateFile.replace(/'/g, "''");
@@ -13559,7 +13559,7 @@ function requireNsisUpdater() {
   Object.defineProperty(NsisUpdater, "__esModule", { value: true });
   NsisUpdater.NsisUpdater = void 0;
   const builder_util_runtime_12 = requireOut();
-  const child_process_12 = require$$1$5;
+  const child_process_12 = require$$1$4;
   const path2 = require$$1;
   const BaseUpdater_1 = requireBaseUpdater();
   const FileWithEmbeddedBlockMapDifferentialDownloader_1 = FileWithEmbeddedBlockMapDifferentialDownloader$1;
@@ -13850,7 +13850,7 @@ var mainExports = requireMain();
 const log4js = require("log4js");
 const path = require("path");
 const { app } = require("electron");
-const LOG_PATH = path.join(app.getAppPath(), "log4");
+const LOG_PATH = path.join(app.getAppPath(), "log4.log");
 log4js.configure({
   appenders: {
     out: { type: "stdout" },
@@ -13911,93 +13911,298 @@ const intsallUpdateApp = () => {
   logger.info("update", "intsallUpdateApp");
   mainExports.autoUpdater.quitAndInstall();
 };
-const openUrlByDefaultBrowser = (e, args) => {
-  require$$1$4.shell.openExternal(args);
+globalThis && globalThis.__classPrivateFieldSet || function(receiver, state, value, kind, f) {
+  if (kind === "m")
+    throw new TypeError("Private method is not writable");
+  if (kind === "a" && !f)
+    throw new TypeError("Private accessor was defined without a setter");
+  if (typeof state === "function" ? receiver !== state || !f : !state.has(receiver))
+    throw new TypeError("Cannot write private member to an object whose class did not declare it");
+  return kind === "a" ? f.call(receiver, value) : f ? f.value = value : state.set(receiver, value), value;
 };
-const initIpc = (mainWindow, workWindow2) => {
-  require$$1$4.ipcMain.on("openUrlByDefaultBrowser", openUrlByDefaultBrowser);
-  require$$1$4.ipcMain.on("communicateWithEachOtherSend", (event, arg) => {
-    event.reply("communicateWithEachOtherReply", `I got ${arg},ok`);
-  });
-  require$$1$4.ipcMain.on("communicateWithEachOtherSendSync", (event, arg) => {
-    event.returnValue = `I got ${arg},ok`;
-  });
-  require$$1$4.ipcMain.handle("communicateWithEachOtherSendPromise", async (event, arg) => {
-    return `I got ${arg},ok`;
-  });
-  require$$1$4.ipcMain.on("renderSendMsgToWork", (event, msg) => {
-    workWindow2 && workWindow2.webContents.send("msgFormRender", msg);
-  });
-  require$$1$4.ipcMain.handle("callNativeSumByDylib", (event, arg) => {
-    return callNativeSumByDylib(arg.parmasOne, arg.parmasTwo);
-  });
-  require$$1$4.ipcMain.handle("callNativeSumByRustnode", (event, arg) => {
-    return callNativeSumByRustnode(arg.parmasOne, arg.parmasTwo);
-  });
-  require$$1$4.ipcMain.handle("callNativeSubtractionByRustnode", (event, arg) => {
-    return callNativeSubtractionByRustnode(arg.parmasOne, arg.parmasTwo);
-  });
-  require$$1$4.ipcMain.handle("intsallUpdateApp", () => {
-    intsallUpdateApp();
-  });
+globalThis && globalThis.__classPrivateFieldGet || function(receiver, state, kind, f) {
+  if (kind === "a" && !f)
+    throw new TypeError("Private accessor was defined without a getter");
+  if (typeof state === "function" ? receiver !== state || !f : !state.has(receiver))
+    throw new TypeError("Cannot read private member from an object whose class did not declare it");
+  return kind === "m" ? f : kind === "a" ? f.call(receiver) : f ? f.value : state.get(receiver);
 };
-const MODE = "dev";
-const baseUrls = {
-  dev: "https://www.baidu.com",
-  production: "https://github.com"
+globalThis && globalThis.__classPrivateFieldSet || function(receiver, state, value, kind, f) {
+  if (kind === "m")
+    throw new TypeError("Private method is not writable");
+  if (kind === "a" && !f)
+    throw new TypeError("Private accessor was defined without a setter");
+  if (typeof state === "function" ? receiver !== state || !f : !state.has(receiver))
+    throw new TypeError("Cannot write private member to an object whose class did not declare it");
+  return kind === "a" ? f.call(receiver, value) : f ? f.value = value : state.set(receiver, value), value;
 };
-const baseUrl = baseUrls[MODE];
-const baseOptions = (params, method = "get") => {
-  let { url, data } = params;
-  let contentType = "application/json";
-  contentType = params.contentType || contentType;
-  const option = {
-    url: baseUrl + url,
-    data,
-    method,
-    header: {
-      "content-type": contentType,
-      Authorization: ""
+globalThis && globalThis.__classPrivateFieldGet || function(receiver, state, kind, f) {
+  if (kind === "a" && !f)
+    throw new TypeError("Private accessor was defined without a getter");
+  if (typeof state === "function" ? receiver !== state || !f : !state.has(receiver))
+    throw new TypeError("Cannot read private member from an object whose class did not declare it");
+  return kind === "m" ? f : kind === "a" ? f.call(receiver) : f ? f.value : state.get(receiver);
+};
+globalThis && globalThis.__classPrivateFieldSet || function(receiver, state, value, kind, f) {
+  if (kind === "m")
+    throw new TypeError("Private method is not writable");
+  if (kind === "a" && !f)
+    throw new TypeError("Private accessor was defined without a setter");
+  if (typeof state === "function" ? receiver !== state || !f : !state.has(receiver))
+    throw new TypeError("Cannot write private member to an object whose class did not declare it");
+  return kind === "a" ? f.call(receiver, value) : f ? f.value = value : state.set(receiver, value), value;
+};
+globalThis && globalThis.__classPrivateFieldGet || function(receiver, state, kind, f) {
+  if (kind === "a" && !f)
+    throw new TypeError("Private accessor was defined without a getter");
+  if (typeof state === "function" ? receiver !== state || !f : !state.has(receiver))
+    throw new TypeError("Cannot read private member from an object whose class did not declare it");
+  return kind === "m" ? f : kind === "a" ? f.call(receiver) : f ? f.value : state.get(receiver);
+};
+var __classPrivateFieldSet$1 = globalThis && globalThis.__classPrivateFieldSet || function(receiver, state, value, kind, f) {
+  if (kind === "m")
+    throw new TypeError("Private method is not writable");
+  if (kind === "a" && !f)
+    throw new TypeError("Private accessor was defined without a setter");
+  if (typeof state === "function" ? receiver !== state || !f : !state.has(receiver))
+    throw new TypeError("Cannot write private member to an object whose class did not declare it");
+  return kind === "a" ? f.call(receiver, value) : f ? f.value = value : state.set(receiver, value), value;
+};
+var __classPrivateFieldGet$1 = globalThis && globalThis.__classPrivateFieldGet || function(receiver, state, kind, f) {
+  if (kind === "a" && !f)
+    throw new TypeError("Private accessor was defined without a getter");
+  if (typeof state === "function" ? receiver !== state || !f : !state.has(receiver))
+    throw new TypeError("Cannot read private member from an object whose class did not declare it");
+  return kind === "m" ? f : kind === "a" ? f.call(receiver) : f ? f.value : state.get(receiver);
+};
+var _TextFileSync_tempFilename, _TextFileSync_filename;
+class TextFileSync {
+  constructor(filename) {
+    _TextFileSync_tempFilename.set(this, void 0);
+    _TextFileSync_filename.set(this, void 0);
+    __classPrivateFieldSet$1(this, _TextFileSync_filename, filename, "f");
+    __classPrivateFieldSet$1(this, _TextFileSync_tempFilename, require$$1.join(require$$1.dirname(filename), `.${require$$1.basename(filename)}.tmp`), "f");
+  }
+  read() {
+    let data;
+    try {
+      data = fs$j.readFileSync(__classPrivateFieldGet$1(this, _TextFileSync_filename, "f"), "utf-8");
+    } catch (e) {
+      if (e.code === "ENOENT") {
+        return null;
+      }
+      throw e;
     }
-  };
-  return option;
+    return data;
+  }
+  write(str2) {
+    fs$j.writeFileSync(__classPrivateFieldGet$1(this, _TextFileSync_tempFilename, "f"), str2);
+    fs$j.renameSync(__classPrivateFieldGet$1(this, _TextFileSync_tempFilename, "f"), __classPrivateFieldGet$1(this, _TextFileSync_filename, "f"));
+  }
+}
+_TextFileSync_tempFilename = /* @__PURE__ */ new WeakMap(), _TextFileSync_filename = /* @__PURE__ */ new WeakMap();
+var __classPrivateFieldSet = globalThis && globalThis.__classPrivateFieldSet || function(receiver, state, value, kind, f) {
+  if (kind === "m")
+    throw new TypeError("Private method is not writable");
+  if (kind === "a" && !f)
+    throw new TypeError("Private accessor was defined without a setter");
+  if (typeof state === "function" ? receiver !== state || !f : !state.has(receiver))
+    throw new TypeError("Cannot write private member to an object whose class did not declare it");
+  return kind === "a" ? f.call(receiver, value) : f ? f.value = value : state.set(receiver, value), value;
 };
-const netRequest = (option) => {
-  return new Promise(async (resolve, reject) => {
-    const { net } = require("electron");
-    const request = net.request(option);
-    let Data = {};
-    request.on("response", (response) => {
-      console.log(`STATUS: ${response.statusCode}`);
-      console.log(`HEADERS: ${JSON.stringify(response.headers)}`);
-      response.on("data", (chunk) => {
-        console.log(`BODY: ${chunk}`);
-        Data = chunk;
-      });
-      response.on("end", () => {
-        console.log("No more data in response.");
-        resolve(Data);
-      });
+var __classPrivateFieldGet = globalThis && globalThis.__classPrivateFieldGet || function(receiver, state, kind, f) {
+  if (kind === "a" && !f)
+    throw new TypeError("Private accessor was defined without a getter");
+  if (typeof state === "function" ? receiver !== state || !f : !state.has(receiver))
+    throw new TypeError("Cannot read private member from an object whose class did not declare it");
+  return kind === "m" ? f : kind === "a" ? f.call(receiver) : f ? f.value : state.get(receiver);
+};
+var _JSONFileSync_adapter;
+class JSONFileSync {
+  constructor(filename) {
+    _JSONFileSync_adapter.set(this, void 0);
+    __classPrivateFieldSet(this, _JSONFileSync_adapter, new TextFileSync(filename), "f");
+  }
+  read() {
+    const data = __classPrivateFieldGet(this, _JSONFileSync_adapter, "f").read();
+    if (data === null) {
+      return null;
+    } else {
+      return JSON.parse(data);
+    }
+  }
+  write(obj) {
+    __classPrivateFieldGet(this, _JSONFileSync_adapter, "f").write(JSON.stringify(obj, null, 2));
+  }
+}
+_JSONFileSync_adapter = /* @__PURE__ */ new WeakMap();
+globalThis && globalThis.__classPrivateFieldSet || function(receiver, state, value, kind, f) {
+  if (kind === "m")
+    throw new TypeError("Private method is not writable");
+  if (kind === "a" && !f)
+    throw new TypeError("Private accessor was defined without a setter");
+  if (typeof state === "function" ? receiver !== state || !f : !state.has(receiver))
+    throw new TypeError("Cannot write private member to an object whose class did not declare it");
+  return kind === "a" ? f.call(receiver, value) : f ? f.value = value : state.set(receiver, value), value;
+};
+globalThis && globalThis.__classPrivateFieldGet || function(receiver, state, kind, f) {
+  if (kind === "a" && !f)
+    throw new TypeError("Private accessor was defined without a getter");
+  if (typeof state === "function" ? receiver !== state || !f : !state.has(receiver))
+    throw new TypeError("Cannot read private member from an object whose class did not declare it");
+  return kind === "m" ? f : kind === "a" ? f.call(receiver) : f ? f.value : state.get(receiver);
+};
+globalThis && globalThis.__classPrivateFieldGet || function(receiver, state, kind, f) {
+  if (kind === "a" && !f)
+    throw new TypeError("Private accessor was defined without a getter");
+  if (typeof state === "function" ? receiver !== state || !f : !state.has(receiver))
+    throw new TypeError("Cannot read private member from an object whose class did not declare it");
+  return kind === "m" ? f : kind === "a" ? f.call(receiver) : f ? f.value : state.get(receiver);
+};
+globalThis && globalThis.__classPrivateFieldSet || function(receiver, state, value, kind, f) {
+  if (kind === "m")
+    throw new TypeError("Private method is not writable");
+  if (kind === "a" && !f)
+    throw new TypeError("Private accessor was defined without a setter");
+  if (typeof state === "function" ? receiver !== state || !f : !state.has(receiver))
+    throw new TypeError("Cannot write private member to an object whose class did not declare it");
+  return kind === "a" ? f.call(receiver, value) : f ? f.value = value : state.set(receiver, value), value;
+};
+globalThis && globalThis.__classPrivateFieldGet || function(receiver, state, kind, f) {
+  if (kind === "a" && !f)
+    throw new TypeError("Private accessor was defined without a getter");
+  if (typeof state === "function" ? receiver !== state || !f : !state.has(receiver))
+    throw new TypeError("Cannot read private member from an object whose class did not declare it");
+  return kind === "m" ? f : kind === "a" ? f.call(receiver) : f ? f.value : state.get(receiver);
+};
+globalThis && globalThis.__classPrivateFieldSet || function(receiver, state, value, kind, f) {
+  if (kind === "m")
+    throw new TypeError("Private method is not writable");
+  if (kind === "a" && !f)
+    throw new TypeError("Private accessor was defined without a setter");
+  if (typeof state === "function" ? receiver !== state || !f : !state.has(receiver))
+    throw new TypeError("Cannot write private member to an object whose class did not declare it");
+  return kind === "a" ? f.call(receiver, value) : f ? f.value = value : state.set(receiver, value), value;
+};
+class MissingAdapterError extends Error {
+  constructor() {
+    super();
+    this.message = "Missing Adapter";
+  }
+}
+class LowSync {
+  constructor(adapter) {
+    Object.defineProperty(this, "adapter", {
+      enumerable: true,
+      configurable: true,
+      writable: true,
+      value: void 0
     });
-    request.end();
+    Object.defineProperty(this, "data", {
+      enumerable: true,
+      configurable: true,
+      writable: true,
+      value: null
+    });
+    if (adapter) {
+      this.adapter = adapter;
+    } else {
+      throw new MissingAdapterError();
+    }
+  }
+  read() {
+    this.data = this.adapter.read();
+  }
+  write() {
+    if (this.data !== null) {
+      this.adapter.write(this.data);
+    }
+  }
+}
+let dbInstance = null;
+const readDbData = (key) => {
+  return new Promise(async (resolve) => {
+    if (dbInstance) {
+      try {
+        await dbInstance.read();
+        const res = dbInstance.data[key];
+        resolve(res || "");
+      } catch {
+        resolve("");
+      }
+    } else {
+      resolve("");
+    }
   });
 };
-const baseRequest = (url, data) => {
-  const option = baseOptions({
-    url,
-    data
-  });
-  {
-    return netRequest(option);
+const writeDbData = async (data) => {
+  if (dbInstance) {
+    try {
+      await dbInstance.read();
+      dbInstance.data[data.key] = data.value;
+      await dbInstance.write();
+    } catch (err) {
+      console.error(err);
+    }
   }
 };
-const testFetch = () => {
-  return baseRequest("/s", {});
+const initDb = () => {
+  return new Promise(async (resolve) => {
+    const file2 = require$$1.join(require$$1$3.app.getAppPath(), "db.json");
+    const adapter = new JSONFileSync(file2);
+    dbInstance = new LowSync(adapter);
+    await dbInstance.read();
+    if (dbInstance.data && dbInstance.data["vite-react-electron-template"]) {
+      resolve(true);
+    } else {
+      dbInstance.data = {
+        "vite-react-electron-template": "yyds"
+      };
+      await dbInstance.write();
+      resolve(true);
+    }
+  });
+};
+const openUrlByDefaultBrowser = (e, args) => {
+  require$$1$3.shell.openExternal(args);
+};
+const initIpc = (mainWindow, workWindow2) => {
+  require$$1$3.ipcMain.on("openUrlByDefaultBrowser", openUrlByDefaultBrowser);
+  require$$1$3.ipcMain.on("communicateWithEachOtherSend", (event, arg) => {
+    event.reply("communicateWithEachOtherReply", `I got ${arg},ok`);
+  });
+  require$$1$3.ipcMain.on("communicateWithEachOtherSendSync", (event, arg) => {
+    event.returnValue = `I got ${arg},ok`;
+  });
+  require$$1$3.ipcMain.handle("communicateWithEachOtherSendPromise", async (event, arg) => {
+    return `I got ${arg},ok`;
+  });
+  require$$1$3.ipcMain.on("renderSendMsgToWork", (_event, msg) => {
+    workWindow2 && workWindow2.webContents.send("msgFormRender", msg);
+  });
+  require$$1$3.ipcMain.handle("callNativeSumByDylib", (_event, arg) => {
+    return callNativeSumByDylib(arg.parmasOne, arg.parmasTwo);
+  });
+  require$$1$3.ipcMain.handle("callNativeSumByRustnode", (_event, arg) => {
+    return callNativeSumByRustnode(arg.parmasOne, arg.parmasTwo);
+  });
+  require$$1$3.ipcMain.handle("callNativeSubtractionByRustnode", (_event, arg) => {
+    return callNativeSubtractionByRustnode(arg.parmasOne, arg.parmasTwo);
+  });
+  require$$1$3.ipcMain.handle("intsallUpdateApp", () => {
+    intsallUpdateApp();
+  });
+  require$$1$3.ipcMain.handle("readDbData", (_event, key) => {
+    return readDbData(key);
+  });
+  require$$1$3.ipcMain.handle("writeDbData", (_event, data) => {
+    return writeDbData(data);
+  });
 };
 let workWindow = null;
 exports.mainWindow = null;
 const createWindow = () => {
-  exports.mainWindow = new require$$1$4.BrowserWindow({
+  exports.mainWindow = new require$$1$3.BrowserWindow({
     width: 960,
     height: 720,
     webPreferences: {
@@ -14013,7 +14218,7 @@ const createWindow = () => {
       exports.mainWindow.webContents.openDevTools();
     }
   }
-  workWindow = new require$$1$4.BrowserWindow({
+  workWindow = new require$$1$3.BrowserWindow({
     show: false,
     webPreferences: {
       nodeIntegration: true,
@@ -14026,7 +14231,7 @@ const createWindow = () => {
     workWindow.webContents.openDevTools();
   }
   workWindow.loadFile(require$$1.resolve(__dirname, "../work/index.html"));
-  const { port1, port2 } = new require$$1$4.MessageChannelMain();
+  const { port1, port2 } = new require$$1$3.MessageChannelMain();
   exports.mainWindow.once("ready-to-show", () => {
     exports.mainWindow.webContents.postMessage("port", null, [port1]);
   });
@@ -14035,9 +14240,9 @@ const createWindow = () => {
   });
 };
 const creatMenu = () => {
-  const menu = require$$1$4.Menu.buildFromTemplate([
+  const menu = require$$1$3.Menu.buildFromTemplate([
     {
-      label: require$$1$4.app.name,
+      label: require$$1$3.app.name,
       submenu: [
         {
           click: () => {
@@ -14048,21 +14253,20 @@ const creatMenu = () => {
       ]
     }
   ]);
-  require$$1$4.Menu.setApplicationMenu(menu);
+  require$$1$3.Menu.setApplicationMenu(menu);
 };
-require$$1$4.app.whenReady().then(() => {
-  createWindow();
+require$$1$3.app.whenReady().then(() => {
   creatMenu();
-  initIpc(exports.mainWindow, workWindow);
-  require$$1$4.app.on("activate", () => {
-    if (require$$1$4.BrowserWindow.getAllWindows().length === 0)
+  initDb().then(() => {
+    createWindow();
+    initIpc(exports.mainWindow, workWindow);
+  });
+  require$$1$3.app.on("activate", () => {
+    if (require$$1$3.BrowserWindow.getAllWindows().length === 0)
       createWindow();
   });
   initUpadate();
-  testFetch().then((res) => {
-    console.log(res);
-  });
 });
-require$$1$4.app.on("window-all-closed", () => {
-  require$$1$4.app.quit();
+require$$1$3.app.on("window-all-closed", () => {
+  require$$1$3.app.quit();
 });

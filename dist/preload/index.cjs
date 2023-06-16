@@ -32,6 +32,12 @@ electron.contextBridge.exposeInMainWorld("nativeBridge", {
   },
   intsallUpdateApp: () => {
     electron.ipcRenderer.invoke("intsallUpdateApp");
+  },
+  readDbData: (key) => {
+    return electron.ipcRenderer.invoke("readDbData", key);
+  },
+  writeDbData: (data) => {
+    return electron.ipcRenderer.invoke("writeDbData", data);
   }
 });
 electron.ipcRenderer.on("communicateWithEachOtherReply", (_event, arg) => {

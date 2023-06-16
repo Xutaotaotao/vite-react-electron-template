@@ -44,6 +44,12 @@ contextBridge.exposeInMainWorld("nativeBridge", {
   },
   intsallUpdateApp: () => {
     ipcRenderer.invoke('intsallUpdateApp')
+  },
+  readDbData: (key:string) => {
+    return ipcRenderer.invoke('readDbData',key)
+  },
+  writeDbData: (data:any) => {
+    return ipcRenderer.invoke('writeDbData',data)
   }
 });
 

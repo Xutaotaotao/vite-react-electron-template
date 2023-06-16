@@ -5,21 +5,26 @@ import {
 import { Button,Form, Input } from "antd";
 import { LockOutlined, UserOutlined } from "@ant-design/icons";
 import reactLogo from "@/render/assets/react.svg";
-import { useAuth } from "@/render/auth";
 import viteSvg from '@/render/assets/vite.svg'
 import "./index.less";
+import { loginFetch } from "@/http/service";
+import { useAuth } from "@/render/auth";
 
 function Login() {
-  let navigate = useNavigate();
-  let location = useLocation();
-  let auth = useAuth();
-
+  const navigate = useNavigate();
+  const location = useLocation();
+  const auth = useAuth()
   const onFinish = (values: any) => {
     console.log("Success:", values);
     let from = location.state?.from?.pathname || "/";
-    auth.signin(values.username, () => {
-      navigate(from, { replace: true });
-    });
+    loginFetch(values).then((res:any) => {
+      if (res.data) {
+        auth.signin(res.data, () => {
+          navigate(from, { replace: true });
+        });
+      }
+    })
+    
   };
 
 

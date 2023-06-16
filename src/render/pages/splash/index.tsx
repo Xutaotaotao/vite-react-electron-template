@@ -1,13 +1,19 @@
 import { useEffect } from 'react'
 import { useNavigate } from "react-router-dom";
 import './index.less'
+import { useAuth } from '@/render/auth';
+
+
 const Splash = () => {
+  let auth = useAuth();
   const navigate = useNavigate();
   useEffect(() => {
-    setTimeout(() => {
+    if (auth && auth.user)  {
+      navigate("/");
+    } else {
       navigate("/login");
-    }, 3000);
-  },[])
+    }
+  },[auth])
 
   return <div className="container loader">
   <span>W</span>

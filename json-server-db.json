@@ -1,0 +1,27 @@
+{
+  "posts": [
+    {
+      "id": 1,
+      "title": "json-server",
+      "author": "typicode"
+    }
+  ],
+  "comments": [
+    {
+      "id": 1,
+      "body": "some comment",
+      "postId": 1
+    }
+  ],
+  "user": {
+    "name": "Terence",
+    "password": 123456,
+    "token": "jsdhkjalsdkajdkajdjkajkdajdas",
+    "avatar": "https://gw.alipayobjects.com/zos/rmsportal/BiazfanxmamNRoxxVxka.png",
+    "userid": "00000001",
+    "email": "antdesign@alipay.com",
+    "signature": "海纳百川，有容乃大",
+    "title": "前端开发",
+    "group": "某某技术部"
+  }
+}

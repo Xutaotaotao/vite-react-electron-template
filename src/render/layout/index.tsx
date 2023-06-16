@@ -1,22 +1,22 @@
 import { useState } from "react";
-import { Outlet, Link, useLocation } from "react-router-dom";
-import { AuthStatus } from "@/render/auth";
-import { HomeOutlined, UserOutlined } from "@ant-design/icons";
+import { Outlet, useLocation, useNavigate } from "react-router-dom";
 import { Layout, Menu, theme } from "antd";
 import "./index.less";
 import routes from "../route";
+import { useAuth } from "../auth";
 const { Sider, Content } = Layout;
 
-
-function MyLayout() {
+function MyLayout(props: any) {
   let location = useLocation();
   const [collapsed, setCollapsed] = useState(false);
   const {
     token: { colorBgContainer },
   } = theme.useToken();
+  const auth = useAuth();
+
   const Main = () => {
     return (
-      <Layout style={{ height: "100%",overflow:'hidden' }}>
+      <Layout style={{ height: "100%", overflow: "hidden" }}>
         <Sider
           theme="light"
           collapsible
@@ -25,30 +25,30 @@ function MyLayout() {
           width={180}
         >
           <Menu
-            style={{ height: "100%",border:'none' }}
+            style={{ height: "100%", border: "none" }}
             theme="light"
             mode="inline"
             selectedKeys={[location.pathname]}
-            items={
-              routes.filter(route => !route.hidden).map(i => {
+            items={routes
+              .filter((route) => !route.hidden)
+              .map((i) => {
                 return {
                   key: i.path,
                   icon: i.icon,
-                  label:i.label,
-                }
-              })
-            }
+                  label: i.label,
+                };
+              })}
           />
         </Sider>
-        <Layout style={{overflow:'hidden'}}>
+        <Layout style={{ overflow: "hidden" }}>
           <Content
             style={{
-              margin: '8px 8px 8px 8px',
-              padding: '8px 16px 8px 8px',
-              height:'100vh',
-              overflow:'auto',
-              background:colorBgContainer,
-              borderRadius:'4px'
+              margin: "8px 8px 8px 8px",
+              padding: "8px 16px 8px 8px",
+              height: "100vh",
+              overflow: "auto",
+              background: colorBgContainer,
+              borderRadius: "4px",
             }}
           >
             <Outlet />
@@ -57,8 +57,11 @@ function MyLayout() {
       </Layout>
     );
   };
-
-  return <div className="layout">{AuthStatus() ? Main() : <Outlet />}</div>;
+  return (
+    <div className="layout">
+      {auth && auth.user ? Main() : <Outlet />}
+    </div>
+  );
 }
 
 export default MyLayout;

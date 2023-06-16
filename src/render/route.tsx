@@ -11,7 +11,8 @@ const routes = [
     path: "*",
     hidden: true,
     label: <Link to="*">Communication</Link>,
-    element: <Splash />
+    element: <Splash />,
+    auth: true
   },
   {
     path: "/login",

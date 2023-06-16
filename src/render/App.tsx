@@ -1,14 +1,27 @@
-import { Routes, Route } from "react-router-dom";
-import { AuthProvider, RequireAuth } from "./auth";
+import { Routes, Route, useLocation, Navigate } from "react-router-dom";
 import Layout from "./layout";
 import routes from "./route";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { Modal, Popover } from "antd";
 import { InfoCircleOutlined } from "@ant-design/icons";
 import packInfo from "../../package.json";
-import { testFetch } from "@/http/service";
+import { gloabReadDbData } from "@/lowdb";
+import { AuthProvider} from "./auth";
 
 export default function App() {
+  // const navigate = useNavigate()
+  // let auth = useAuth();
+  // const [hasAuth,setHasAuth] = useState(false)
+
+  // useEffect(() => {
+  //   if (auth && auth.user) {
+  //     setHasAuth(true)
+  //   } else {
+  //     navigate("/login");
+  //     setHasAuth(false)
+  //   }
+  // },[])
+
   useEffect(() => {
     window.nativeBridge.onAppUpdateDownloaded((e: any, value: any) => {
       console.log(e, value);
@@ -24,9 +37,9 @@ export default function App() {
         });
       }
     });
-    // testFetch().then(res => {
-    //   console.log(res)
-    // })
+    gloabReadDbData("vite-react-electron-template").then((res: any) => {
+      console.log(res);
+    });
   }, []);
 
   return (
@@ -39,13 +52,7 @@ export default function App() {
                 <Route
                   key={route.path}
                   path={route.path}
-                  element={
-                    route.auth ? (
-                      <RequireAuth>{route.element}</RequireAuth>
-                    ) : (
-                      route.element
-                    )
-                  }
+                  element={route.element}
                 />
               );
             })}

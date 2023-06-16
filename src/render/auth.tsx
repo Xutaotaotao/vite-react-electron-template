@@ -1,4 +1,5 @@
-import React from "react";
+import { gloabReadDbData, gloabWriteDbData } from "@/lowdb";
+import React, { useEffect } from "react";
 import {
   useLocation,
   Navigate,
@@ -17,7 +18,7 @@ export const fakeAuthProvider = {
 
 interface AuthContextType {
   user: any;
-  signin: (user: string, callback: VoidFunction) => void;
+  signin: (user: any, callback: VoidFunction) => void;
   signout: (callback: VoidFunction) => void;
 }
 
@@ -25,22 +26,41 @@ let AuthContext = React.createContext<AuthContextType>(null!);
 
 export function AuthProvider({ children }: { children: React.ReactNode }) {
   let [user, setUser] = React.useState<any>(null);
+  const init = () => {
+    gloabReadDbData('user').then((res:any) => {
+      setUser(res)
+    })
+  }
 
-  let signin = (newUser: string, callback: VoidFunction) => {
+  const signin = (newUser: any, callback: VoidFunction) => {
     return fakeAuthProvider.signin(() => {
       setUser(newUser);
-      callback();
+      gloabWriteDbData({
+        key:'user',
+        value: newUser
+      }).then(() => {
+        callback();
+      })
     });
   };
 
-  let signout = (callback: VoidFunction) => {
+  const signout = (callback: VoidFunction) => {
     return fakeAuthProvider.signout(() => {
       setUser(null);
-      callback();
+      gloabWriteDbData({
+        key:'user',
+        value: ''
+      }).then(() => {
+        callback();
+      })
     });
   };
 
-  let value = { user, signin, signout };
+  useEffect(() => {
+    init()
+  },[])
+
+  const value = { user, signin, signout };
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
 }
@@ -51,7 +71,8 @@ export function useAuth() {
 
 export function AuthStatus() {
   let auth = useAuth();
-  if (auth.user) {
+  console.log('auth',auth)
+  if (auth && auth.user) {
     return true
   }
   return false
@@ -60,11 +81,10 @@ export function AuthStatus() {
 export function RequireAuth({ children }: { children: JSX.Element }) {
   let auth = useAuth();
   let location = useLocation();
-  console.log('auth',auth)
-  if (!auth.user) {
+  console.log(auth,'RequireAuth')
+  if ( !auth || !auth.user) {
     return <Navigate to="/login" state={{ from: location }} replace />;
   }
-
   return children;
 }
 

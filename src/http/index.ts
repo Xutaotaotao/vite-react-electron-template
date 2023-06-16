@@ -19,7 +19,13 @@ interface HttpOption {
   header: HttpHeader;
 }
 
-const  baseOptions = (params: BaseParams, method = "get") => {
+const responseHandle = () => {
+
+}
+
+axios.interceptors.response.use()
+
+const  baseOptions = (params: BaseParams, method = "post") => {
     let { url, data } = params;
     let contentType = "application/json";
     contentType = params.contentType || contentType;
@@ -64,14 +70,22 @@ const  netRequest = (option: HttpOption) => {
     });
   }
 
-  export const baseRequest = (url: string, data: any) => {
+  export const baseRequest = (url: string, data: any, method = "post") => {
     const option = baseOptions({
       url,
       data,
-    });
+    },method);
     if (import.meta.env.VITE_CURRENT_RUN_MODE === "main") {
       return netRequest(option);
     } else {
       return axiosRequest(option);
     }
+  }
+
+  export const postRequest = (url: string, data: any) => {
+    return baseRequest(url, data, "post")
+  }
+
+  export const getRequest = (url: string, data: any) => {
+    return baseRequest(url, data, "get")
   }

@@ -22,6 +22,9 @@
 - [x] 打包构建流程实现
 - [x] 升级更新管理流程实现
 
+# json-server模拟后端接口
+`npm install -g json-server`
+
 # 开发教程
 
 [Electron开发实践(1)——为什么选择Electron](https://juejin.cn/post/7201703197424320549 "https://juejin.cn/post/7201703197424320549")

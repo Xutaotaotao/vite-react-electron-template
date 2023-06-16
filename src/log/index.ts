@@ -2,7 +2,7 @@ const log4js = require('log4js');
 const path = require('path');
 const { app } = require('electron');
 
-const LOG_PATH = path.join(app.getAppPath(), "log4")
+const LOG_PATH = path.join(app.getAppPath(), "log4.log")
 
 log4js.configure({
   appenders: { 
