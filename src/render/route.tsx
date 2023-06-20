@@ -1,10 +1,11 @@
-import { HomeOutlined, UserOutlined,ApiOutlined,AndroidOutlined} from "@ant-design/icons";
+import { HomeOutlined, UserOutlined,ApiOutlined,AndroidOutlined,WifiOutlined} from "@ant-design/icons";
 import { Link } from "react-router-dom";
 import Home from "./pages/home";
 import Communication from "./pages/communication";
 import Login from "./pages/login";
 import Native from "./pages/native";
-import Splash from './pages/splash'
+import Splash from './pages/splash';
+import HttpTest from './pages/http_test';
 
 const routes = [
   {
@@ -41,6 +42,13 @@ const routes = [
     element: <Native />,
     auth: true
   },
+  {
+    path: "/http_test",
+    icon: <WifiOutlined rev={undefined} />,
+    label: <Link to="/http_test">HttpTest</Link>,
+    element: <HttpTest />,
+    auth: true
+  }
 ]
 
 export default routes

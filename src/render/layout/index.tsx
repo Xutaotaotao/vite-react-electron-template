@@ -1,9 +1,9 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Outlet, useLocation, useNavigate } from "react-router-dom";
 import { Layout, Menu, theme } from "antd";
-import "./index.less";
 import routes from "../route";
 import { useAuth } from "../auth";
+import "./index.less";
 const { Sider, Content } = Layout;
 
 function MyLayout(props: any) {
@@ -13,6 +13,13 @@ function MyLayout(props: any) {
     token: { colorBgContainer },
   } = theme.useToken();
   const auth = useAuth();
+  console.log(auth)
+
+  const [hash,setHash] = useState('')
+
+  useEffect(() => {
+    setHash(window.location.hash)
+  },[window.location.hash])
 
   const Main = () => {
     return (
@@ -59,7 +66,7 @@ function MyLayout(props: any) {
   };
   return (
     <div className="layout">
-      {auth && auth.user ? Main() : <Outlet />}
+      {((auth && auth.user) || hash !== '#/login') ? Main() : <Outlet />}
     </div>
   );
 }

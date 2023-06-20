@@ -50,6 +50,14 @@ contextBridge.exposeInMainWorld("nativeBridge", {
   },
   writeDbData: (data:any) => {
     return ipcRenderer.invoke('writeDbData',data)
+  },
+  unauthorizedFetch: () => {
+    return ipcRenderer.invoke('unauthorizedFetch')
+  },
+  onLoginOutFromMain: (callback:Function) => {
+    ipcRenderer.on("login-out", () => {
+      callback();
+    });
   }
 });
 

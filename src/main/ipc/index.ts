@@ -6,6 +6,7 @@ import {
 } from "../native";
 import { intsallUpdateApp } from "../update";
 import { readDbData, writeDbData, WriteDbDataParams} from "@/lowdb/low";
+import { unauthorizedFetch } from "@/http/service";
 
 const openUrlByDefaultBrowser = (e: IpcMainEvent, args: any) => {
   shell.openExternal(args);
@@ -51,4 +52,8 @@ export const initIpc = (mainWindow: any, workWindow: any) => {
   ipcMain.handle("writeDbData", (_event: any, data: WriteDbDataParams) => {
     return writeDbData(data);
   });
+
+  ipcMain.handle('unauthorizedFetch', () => {
+    return unauthorizedFetch()
+  })
 };

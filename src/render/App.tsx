@@ -1,4 +1,4 @@
-import { Routes, Route, useLocation, Navigate } from "react-router-dom";
+import { Routes, Route, useNavigate } from "react-router-dom";
 import Layout from "./layout";
 import routes from "./route";
 import { useEffect, useState } from "react";
@@ -9,7 +9,7 @@ import { gloabReadDbData } from "@/lowdb";
 import { AuthProvider} from "./auth";
 
 export default function App() {
-  // const navigate = useNavigate()
+  const navigate = useNavigate()
   // let auth = useAuth();
   // const [hasAuth,setHasAuth] = useState(false)
 
@@ -40,6 +40,9 @@ export default function App() {
     gloabReadDbData("vite-react-electron-template").then((res: any) => {
       console.log(res);
     });
+    window.nativeBridge.onLoginOutFromMain(() => {
+      navigate("/login");
+    })
   }, []);
 
   return (

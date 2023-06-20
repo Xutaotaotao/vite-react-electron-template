@@ -23,7 +23,11 @@
 - [x] 升级更新管理流程实现
 
 # json-server模拟后端接口
+## 本地安装
 `npm install -g json-server`
+## 模拟运行
+`json-server --port 3999 --watch json-server-db.json --routes json-server-routes.json`
+
 
 # 开发教程
 

@@ -1,5 +1,4 @@
-import { join } from "path";
-import { app } from "electron";
+// import { app } from "electron";
 import { LowSync, JSONFileSync } from "lowdb";
 let dbInstance: any = null;
 
@@ -37,6 +36,9 @@ export const writeDbData = async (data: WriteDbDataParams) => {
 };
 
 export const initDb = () => {
+  const {app} = require('electron')
+  const { join } = require("path");
+
   return new Promise(async (resolve) => {
     const file = join(app.getAppPath(), "db.json");
     const adapter = new JSONFileSync(file);

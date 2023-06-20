@@ -38,6 +38,14 @@ electron.contextBridge.exposeInMainWorld("nativeBridge", {
   },
   writeDbData: (data) => {
     return electron.ipcRenderer.invoke("writeDbData", data);
+  },
+  unauthorizedFetch: () => {
+    return electron.ipcRenderer.invoke("unauthorizedFetch");
+  },
+  onLoginOutFromMain: (callback) => {
+    electron.ipcRenderer.on("login-out", () => {
+      callback();
+    });
   }
 });
 electron.ipcRenderer.on("communicateWithEachOtherReply", (_event, arg) => {

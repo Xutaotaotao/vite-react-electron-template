@@ -1,5 +1,7 @@
 import { builtinModules } from 'module'
+import { fileURLToPath } from 'url';
 import path from "path";
+const __dirname = fileURLToPath(new URL('.', import.meta.url))
 
 const config = {
   root: path.resolve(__dirname, '../src/work'),

@@ -1,5 +1,9 @@
-import {getRequest} from "./index";
+import {getRequest, postRequest} from "./index";
 
 export const loginFetch = (data:any) => {
-  return getRequest(`/user?username=${data.username}`,{})
+  return getRequest(`/api/user?username=${data.username}`,{})
+}
+
+export const unauthorizedFetch = () => {
+  return postRequest('/api/unauthorized',{})
 }
