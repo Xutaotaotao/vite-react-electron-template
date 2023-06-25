@@ -16,6 +16,7 @@ const sharedOptions = {
 
 const renderDev = {
   async createRenderServer() {
+    process.env.VITE_CURRENT_RUN_MODE = "render";
     const options = {
       ...sharedOptions,
       configFile: path.resolve(__dirname, "../vite/render.js"),
@@ -29,6 +30,7 @@ const renderDev = {
 
 const preloadDev = {
   async createRenderServer(viteDevServer) {
+    process.env.VITE_CURRENT_RUN_MODE = "preload";
     const options = {
       ...sharedOptions,
       configFile: path.resolve(__dirname, "../vite/preload.js"),
@@ -52,6 +54,7 @@ const preloadDev = {
 
 const workDev = {
   async createRenderServer(viteDevServer) {
+    process.env.VITE_CURRENT_RUN_MODE = "work";
     const options = {
       ...sharedOptions,
       configFile: path.resolve(__dirname, "../vite/work.js"),

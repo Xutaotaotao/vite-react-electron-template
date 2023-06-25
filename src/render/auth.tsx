@@ -78,13 +78,13 @@ export function AuthStatus() {
   return false
 }
 
-export function RequireAuth({ children }: { children: JSX.Element }) {
-  let auth = useAuth();
-  let location = useLocation();
-  console.log(auth,'RequireAuth')
-  if ( !auth || !auth.user) {
-    return <Navigate to="/login" state={{ from: location }} replace />;
-  }
-  return children;
-}
+// export function RequireAuth({ children }: { children: JSX.Element }) {
+//   let auth = useAuth();
+//   let location = useLocation();
+//   console.log(auth,'RequireAuth')
+//   if ( !auth || !auth.user) {
+//     return <Navigate to="/login" state={{ from: location }} replace />;
+//   }
+//   return children;
+// }
 

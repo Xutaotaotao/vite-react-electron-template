@@ -56,4 +56,8 @@ export const initIpc = (mainWindow: any, workWindow: any) => {
   ipcMain.handle('unauthorizedFetch', () => {
     return unauthorizedFetch()
   })
+
+  ipcMain.handle('loginOutFromWork', () => {
+    mainWindow.webContents.send("login-out", true);
+  })
 };

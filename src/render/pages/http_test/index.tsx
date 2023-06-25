@@ -9,10 +9,15 @@ const HttpTest = () => {
     window.nativeBridge.unauthorizedFetch()
   }
 
+  const workUnauthorizedFetch = () => {
+    window.nativeBridge.renderSendMsgToWork('unauthorizedFetch')
+  }
+
   return <div>
     <Space>
       <Button onClick={unauthorizedFetch}>401（render）</Button>
       <Button onClick={mainUnauthorizedFetch}>401（main）</Button>
+      <Button onClick={workUnauthorizedFetch}>401（work）</Button>
     </Space>
   </div>
 }

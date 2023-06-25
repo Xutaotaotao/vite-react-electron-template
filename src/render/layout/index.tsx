@@ -13,13 +13,7 @@ function MyLayout(props: any) {
     token: { colorBgContainer },
   } = theme.useToken();
   const auth = useAuth();
-  console.log(auth)
 
-  const [hash,setHash] = useState('')
-
-  useEffect(() => {
-    setHash(window.location.hash)
-  },[window.location.hash])
 
   const Main = () => {
     return (
@@ -66,7 +60,7 @@ function MyLayout(props: any) {
   };
   return (
     <div className="layout">
-      {((auth && auth.user) || hash !== '#/login') ? Main() : <Outlet />}
+      {((auth && auth.user) && window.location.hash !== '#/login' && window.location.pathname !== '/login') ? Main() : <Outlet />}
     </div>
   );
 }

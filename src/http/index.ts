@@ -1,7 +1,6 @@
 import axios from "axios";
 import baseUrl from "./baseUrl";
 import { gloabReadDbData, gloabWriteDbData } from "@/lowdb";
-// import { mainWindow } from "@/main";
 
 interface BaseParams {
   url: string;
@@ -16,11 +15,17 @@ interface HttpOption {
   headers: any;
 }
 
+// 登出操作
 const loginOutAction = () => {
   if (import.meta.env.VITE_CURRENT_RUN_MODE === "main") {
     import('@/main').then(res=>{ 
       const {mainWindow} = res
       mainWindow.webContents.send("login-out", true);
+    })
+  } else if (import.meta.env.VITE_CURRENT_RUN_MODE === "work") {
+    import('@/preload').then(res => {
+      const {loginOutFromWork} = res
+      loginOutFromWork()
     })
   } else {
     window.location.hash = "/login";
@@ -31,8 +36,8 @@ const loginOutAction = () => {
   });
 };
 
+// 错误处理/拦截器
 const responseErrorHandle = (error: any) => {
-  console.log(error, "eeeeeeeeeee");
   if (error.response) {
     const { status } = error.response;
     if (status === 401) {
@@ -41,8 +46,7 @@ const responseErrorHandle = (error: any) => {
   }
 };
 
-axios.interceptors.response.use();
-
+// 构建基础的请求参数
 const baseOptions = async (params: BaseParams, method = "post") => {
   const userData = await gloabReadDbData("user");
   const Authorization = userData ? `Bearer ${userData.token}` : "";
@@ -61,6 +65,7 @@ const baseOptions = async (params: BaseParams, method = "post") => {
   return option;
 };
 
+// electron net 请求
 const netRequest = (option: HttpOption) => {
   return new Promise(async (resolve, reject) => {
     const { net } = require("electron");
@@ -90,10 +95,12 @@ const netRequest = (option: HttpOption) => {
   });
 };
 
+// axios请求
 const axiosRequest = (option: HttpOption) => {
   return axios(option);
 };
 
+// 核心基础请求封装
 export const baseRequest = (url: string, data: any, method = "post") => {
   return new Promise(async (resolve, reject) => {
     const option = await baseOptions(

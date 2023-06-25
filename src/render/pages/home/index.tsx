@@ -3,6 +3,7 @@ import { Avatar, Card, Skeleton, Statistic,Divider } from "antd";
 import { PageContainer } from "@ant-design/pro-layout";
 import "./style.less";
 import { useAuth } from "@/render/auth";
+import { useNavigate } from "react-router-dom";
 
 const { Meta } = Card;
 
@@ -91,6 +92,11 @@ const gridStyle: React.CSSProperties = {
 
 function Home() {
   const auth = useAuth()
+  const navigate = useNavigate();
+
+  if (!auth?.user) {
+    navigate("/login");
+  }
 
   const PageHeaderContent = () => {
     if (!auth) {
